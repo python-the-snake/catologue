@@ -1,0 +1,18 @@
+{% extends "medals/base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h1>Favorite medals</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {% for todo in todos %}
+                    <a href="{% url 'viewmedal' todo.id %}" class="list-group-item list-group-item-action{% if medals.important %} list-group-item-danger{% endif %}"><b>{{ medals.title }}</b> - Completed {{ medals.datecompleted|date:'M j Y H:i' }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

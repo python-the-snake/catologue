@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        {% extends "medals/base.html" %}
+
+        {% block content %}
+          <div class="row justify-content-center mt-5">
+               <div class="col-md-10">
+            {% if todos %}
+                 <h1>{{ medals.count }} Added medals {{ medals.count|pluralize }}</h1>
+            {% else %}
+                           <h1>Added medals</h1>
+            {% endif %}
+               </div>
+           </div>
+           <div class="row justify-content-center mt-5">
+               <div class="col-md-10">
+                   {% if medals %}
+                     <div class="list-group">
+                          {% for todo in todos %}
+                               <a href="{% url 'viewmedal' medals.id %}" class="list-group-item list-group-item-action{% if medals.important %} list-group-item-danger{% endif %}"><b>{{ medals.title }}</b>{% if medals.memo %} - {{ medals.memo|truncatechars:30 }}{% endif %}</a>
+                                 {% endfor %}
+                     </div>
+                  {% else %}
+                 <div class="text-center">
+                <h2>Looks like you don't have any medals! You need to add some.</h2>
+                <br>
+                <a role="button" class="btn btn-primary" href="{% url 'createmedal' %}">New medal</a>
+                </div>
+                {% endif %}
+                </div>
+           </div>
+        {% endblock %}
+    </body>
+</html>
