@@ -20,8 +20,8 @@
                <div class="col-md-10">
                    {% if medals %}
                      <div class="list-group">
-                          {% for todo in todos %}
-                               <a href="{% url 'viewmedal' medals.id %}" class="list-group-item list-group-item-action{% if medals.important %} list-group-item-danger{% endif %}"><b>{{ medals.title }}</b>{% if medals.memo %} - {{ medals.memo|truncatechars:30 }}{% endif %}</a>
+                          {% for medal in medals %}
+                               <a href="{% url 'viewmedal' medals.id %}" class="list-group-item list-group-item-action{% if medals.important %} list-group-item-danger{% endif %}"><b>{{ medals.title }}</b>{% if medals.memo %} - {{ medals.memo|truncatechars:30 }}<b>{{ medals.year }}</b><b>{{ medals.country }}</b><b>{{ medals.person }}</b>{% endif %}</a>
                                  {% endfor %}
                      </div>
                   {% else %}
